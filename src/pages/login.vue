@@ -1,5 +1,6 @@
 <script setup>
 import { reactive } from 'vue'
+import { User,Lock } from '@element-plus/icons-vue'
 
 const form = reactive({
    username:"",
@@ -28,10 +29,18 @@ const onSubmit = () => {
                 </div>
                 <el-form :model="form" class="w-250px">
                     <el-form-item>
-                        <el-input v-model="form.username" placeholder="请输入用户名"/>
+                        <el-input v-model="form.username" placeholder="请输入用户名">
+                            <template #prefix>
+                                <el-icon class="el-input__icon"><user /></el-icon>
+                            </template>
+                        </el-input>
                     </el-form-item>
                     <el-form-item>
-                        <el-input v-model="form.password" placeholder="请输入密码"/>
+                        <el-input v-model="form.password" placeholder="请输入密码">
+                            <template #prefix>
+                                <el-icon class="el-input__icon"><lock /></el-icon>
+                            </template>
+                        </el-input>
                     </el-form-item>
                     <el-form-item>
                         <el-button round type="primary" class="w-250px" color="#626aef">登 录</el-button>
