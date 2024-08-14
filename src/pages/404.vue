@@ -7,3 +7,5 @@
         </el-result>
     </div>
 </template>
+<script setup>
+</script>
