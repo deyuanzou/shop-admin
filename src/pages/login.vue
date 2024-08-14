@@ -13,13 +13,13 @@ const onSubmit = () => {
 
 <template>
     <el-row class="bg-indigo-500 min-h-screen">
-        <el-col :span="16" class="flex items-center justify-center">
+        <el-col :lg="16" :md="12" class="flex items-center justify-center">
             <div>
                 <div class="font-bold text-5xl text-light-50 mb-4">欢迎光临</div>
                 <div class="text-gray-200 text-sm">此站点是Vue3+Vite开发的商城后台</div>
             </div>
         </el-col>
-        <el-col :span="8" class="bg-light-50 flex items-center justify-center flex-col">
+        <el-col :lg="8" :md="12" class="bg-light-50 flex items-center justify-center flex-col">
                 <h2 class="font-bold text-3xl text-gray-800">欢迎回来</h2>
                 <div class="flex items-center justify-center my-5 text-gray-300 space-x-2">
                     <span class="h-1px w-16 bg-gray-200"></span>
