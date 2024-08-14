@@ -1,8 +1,8 @@
 import { createRouter, createWebHashHistory,createWebHistory } from "vue-router";
 
 import Index from '~/pages/index.vue';
-import About from '~/pages/about.vue';
 import NotFound from '~/pages/404.vue';
+import Login from '~/pages/login.vue';
 
 const routes = [
     {
@@ -10,13 +10,13 @@ const routes = [
         component: Index,
     },
     {
-        path: "/about",
-        component: About,
-    },
-    {
         path: '/:pathMatch(.*)*',
         name: 'NotFound',
         component: NotFound
+    },
+    {
+        path: '/login',
+        component: Login
     }
 ]
 
