@@ -1,6 +1,6 @@
 <script setup>
 import { reactive } from 'vue'
-import { User,Lock } from '@element-plus/icons-vue'
+// import { User,Lock } from '@element-plus/icons-vue'
 
 const form = reactive({
    username:"",
@@ -13,19 +13,19 @@ const onSubmit = () => {
 </script>
 
 <template>
-    <el-row class="bg-indigo-500 min-h-screen">
-        <el-col :lg="16" :md="12" class="flex items-center justify-center">
+    <el-row class="login-container">
+        <el-col :lg="16" :md="12" class="left">
             <div>
-                <div class="font-bold text-5xl text-light-50 mb-4">欢迎光临</div>
-                <div class="text-gray-200 text-sm">此站点是Vue3+Vite开发的商城后台</div>
+                <div>欢迎光临</div>
+                <div>此站点是Vue3+Vite开发的商城后台</div>
             </div>
         </el-col>
-        <el-col :lg="8" :md="12" class="bg-light-50 flex items-center justify-center flex-col">
-                <h2 class="font-bold text-3xl text-gray-800">欢迎回来</h2>
-                <div class="flex items-center justify-center my-5 text-gray-300 space-x-2">
-                    <span class="h-1px w-16 bg-gray-200"></span>
+        <el-col :lg="8" :md="12" class="right">
+                <h2>欢迎回来</h2>
+                <div>
+                    <span></span>
                     <span>账号密码登录</span>
-                    <span class="h-1px w-16 bg-gray-200"></span>
+                    <span></span>
                 </div>
                 <el-form :model="form" class="w-250px">
                     <el-form-item>
@@ -51,5 +51,29 @@ const onSubmit = () => {
 </template>
 
 <style scoped>
+.login-container {
+    @apply bg-indigo-500 min-h-screen;
+}
+.left {
+    @apply flex items-center justify-center;
+}
+.right {
+    @apply bg-light-50 flex items-center justify-center flex-col;
+}
+.left > div > div:first-child {
+    @apply font-bold text-5xl text-light-50 mb-4;
+}
+.left > div > div:nth-child(2) {
+    @apply text-gray-200 text-sm;
+}
+.right > h2 {
+    @apply font-bold text-3xl text-gray-800;
+}
+.right > div {
+    @apply flex items-center justify-center my-5 text-gray-300 space-x-2;
+}
+.right > div > span {
+    @apply h-1px w-16 bg-gray-200;
+}
 
 </style>
