@@ -19,7 +19,7 @@ router.beforeEach(async (to, from, next) => {
     }
 
     if (token) {
-        await store.dispatch("getInfo")
+        await store.dispatch("getinfo")
     }
 
     let title = (to.meta.title?to.meta.title:"")+""

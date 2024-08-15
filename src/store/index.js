@@ -15,7 +15,7 @@ const store = createStore({
         }
     },
     actions: {
-        getInfo({commit}) {
+        getinfo({commit}) {
             return new Promise((resolve, reject) => {
                 getinfo()
                     .then(res => {
