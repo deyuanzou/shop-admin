@@ -27,4 +27,9 @@
   @apply bg-purple-500 text-indigo-50 px-4 py-2 rounded 
   my-4 mx-4 hover:(bg-purple-900) focus:(ring-2);
 } */
+
+#nprogress .bar {
+    background-color: #f4f4f4 !important;
+    height: 5px !important;
+}
 </style>

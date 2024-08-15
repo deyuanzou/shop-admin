@@ -8,15 +8,24 @@ const routes = [
     {
         path: "/",
         component: Index,
+        meta:{
+            title:"后台首页"
+        }
     },
     {
         path: '/:pathMatch(.*)*',
         name: 'NotFound',
-        component: NotFound
+        component: NotFound,
+        meta: {
+            title: "404"
+        }
     },
     {
         path: '/login',
-        component: Login
+        component: Login,
+        meta:{
+            title: "登录"
+        }
     }
 ]
 

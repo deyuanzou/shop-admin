@@ -43,12 +43,15 @@
 </template>
 
 <script setup>
-import {reactive, ref} from 'vue'
-import {login, getinfo} from "~/api/manager.js";
+import {onBeforeUnmount, onMounted, reactive, ref} from 'vue'
+// import {login} from "~/api/manager.js";
 // import { User,Lock } from '@element-plus/icons-vue'
 import {ElNotification} from 'element-plus'
-import {useCookies} from '@vueuse/integrations/useCookies'
+// import {useCookies} from '@vueuse/integrations/useCookies'
 import router from "~/router/index.js";
+import {setToken,getToken,removeToken} from "~/composables/auth.js";
+import {toast} from "~/composables/util.js";
+import store from "~/store/index.js";
 
 
 const form = reactive({
@@ -83,31 +86,58 @@ const onSubmit = () => {
             return false
         }
         loading.value = true
-        login(form.username, form.password)
-            .then(res => {
-                console.log(res)
-                ElNotification({
-                    message: '请求成功',
-                    type: 'success',
-                    duration: 3000,
-                    position: 'top-right'
-                })
+        // login(form.username, form.password)
+        //     .then(res => {
+        //         console.log(res)
+        //         // ElNotification({
+        //         //     message: '请求成功',
+        //         //     type: 'success',
+        //         //     duration: 3000,
+        //         //     position: 'top-right'
+        //         // })
+        //         toast('登录成功')
+        //
+        //         // const cookie = useCookies()
+        //         // cookie.set("admin-token", res.token)
+        //         setToken(res.token)
+        //
+        //         // getinfo().
+        //         // then(res => {
+        //         //     store.commit("setUserInfo",res)
+        //         //     console.log(res)
+        //         // })
+        //
+        //         router.push("/")
+        //     })
+        //     .finally(() => {
+        //         loading.value = false
+        //     })
 
-                const cookie = useCookies()
-                cookie.set("admin-token", res.token)
-
-                getinfo().
-                then(res2 => {
-                    console.log(res2)
-                })
-
-                router.push("/")
+        store.dispatch("login",form)
+            .then(res=>{
+                toast("登陆成功")
+                router.push('/')
             })
-            .finally(() => {
-                loading.value = false
+            .finally(()=>{
+                    loading.value = false
             })
     })
 }
+
+function onKeyUp(e) {
+    if (e.key=='Enter') {
+        onSubmit()
+    }
+}
+
+onMounted(()=>{
+    document.addEventListener("keyup",onKeyUp)
+})
+
+onBeforeUnmount(()=>{
+    document.removeEventListener("keyup",onKeyUp)
+})
+
 </script>
 
 
