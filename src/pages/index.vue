@@ -1,26 +1,30 @@
 <template>
     <div>
         后台首页
-        <br>
-        <el-button @click="addCount">{{count}}</el-button>
-        <el-button @click="addCount2">{{form.count}}</el-button>
+        <el-button @click="set('foo')">设置</el-button>
+        <el-button @click="get('foo')">读取</el-button>
+        <el-button @click="remove('foo')">删除</el-button>
+
     </div>
 </template>
 <script setup>
-import {reactive, ref} from "vue";
+import {useCookies} from '@vueuse/integrations/useCookies'
 
-let count = ref(1)
+const cookie = useCookies()
 
-function addCount() {
-    count.value++
+console.log(cookie)
+
+function set(name) {
+    cookie.set(name, "123456")
 }
 
-function addCount2() {
-    form.count++
+function get(name) {
+    console.log(cookie.get(name))
 }
 
-let form = reactive({
-    count: 1
-})
+function remove(name) {
+    cookie.remove(name)
+}
+
 
 </script>
