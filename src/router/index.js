@@ -21,7 +21,10 @@ const routes = [
     },
     {
         path: '/index',
-        component: Index
+        component: Index,
+        meta: {
+            title:'首页'
+        }
     },
     {
         path: '/:pathMatch(.*)*',
